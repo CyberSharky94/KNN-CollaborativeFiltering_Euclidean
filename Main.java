@@ -175,9 +175,6 @@ public class Main {
             
             collSimilarityScores.put(otherUser.getName(), similarityScore);
         }
-
-        //sort all similarity scores (ORDER BY -> ASC = true, DESC = false)
-        collSimilarityScores = sortSimilarityByComparator(collSimilarityScores, false);
         
         //find weighted average and give recommendation based on k Nearest Neighbor
         computeRecommendation(currentUser);
@@ -236,32 +233,6 @@ public class Main {
         similarity = 1 / (1 + sqrtSumOapRate);
         
         return similarity;
-    }
-    
-    //---- sort similarity by value using LinkedList and Comparator
-    private static Map<String, Double> sortSimilarityByComparator(Map<String, Double> unsorted, final boolean order) {
-        
-        List<Entry<String, Double>> list = new LinkedList<Entry<String, Double>>(unsorted.entrySet());
-        
-        //sort list based on values
-        Collections.sort(list, new Comparator<Entry<String, Double>>(){
-        
-            public int compare(Entry<String, Double> object1, Entry<String, Double> object2) {
-                if(order) {
-                    return object1.getValue().compareTo(object2.getValue());
-                } else {
-                    return object2.getValue().compareTo(object1.getValue());
-                }
-            }
-        });
-        
-        // maintain insertion order of sorted map with LinkedList
-        Map<String, Double> sorted = new LinkedHashMap<>();
-        for(Entry<String, Double> entry : list) {
-            sorted.put(entry.getKey(), entry.getValue());
-        }
-        
-        return sorted;
     }
     
     //find weighted average and give recommendations
