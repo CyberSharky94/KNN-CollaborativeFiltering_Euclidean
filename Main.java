@@ -52,9 +52,9 @@ public class Main {
         
         //add data for User   
         users.add(new User("Shakirin", "Melaka", "24"));
-        users.add(new User("Aishah", "Negeri Sembilan", "22"));
-        users.add(new User("Azim", "Kelantan", "22"));
-        users.add(new User("Fahira", "Pulau Pinang", "22"));
+        users.add(new User("User A", "Negeri Sembilan", "22"));
+        users.add(new User("User B", "Kelantan", "22"));
+        users.add(new User("User C", "Pulau Pinang", "22"));
         inituser = true;
         
         //add data for OutdoorActivityPlace
